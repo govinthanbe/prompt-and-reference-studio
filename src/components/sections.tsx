@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import heroSmoke from "@/assets/hero-smoke.jpg";
 import bugzenImg from "@/assets/bugzen.jpg";
+import portraitImg from "@/assets/portrait.jpg.asset.json";
 import { profile, stats, skills, projects } from "@/lib/profile";
 import { Reveal, SplitText, SectionHeading, PillButton, Magnetic } from "./motion-kit";
 import { ContactForm } from "./contact-form";
