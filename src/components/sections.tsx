@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import heroSmoke from "@/assets/hero-smoke.jpg";
 import bugzenImg from "@/assets/bugzen.jpg";
+import portraitImg from "@/assets/portrait.jpg.asset.json";
 import { profile, stats, skills, projects } from "@/lib/profile";
 import { Reveal, SplitText, SectionHeading, PillButton, Magnetic } from "./motion-kit";
 import { ContactForm } from "./contact-form";
@@ -74,7 +75,12 @@ export function About() {
             <Reveal delay={0.1}><p className="mt-10 max-w-2xl text-xl leading-relaxed text-muted-foreground">I enjoy transforming ideas into interactive digital experiences and exploring AI, software development, cybersecurity and modern web technologies.</p></Reveal>
           </div>
           <Reveal delay={0.2} className="md:col-span-4">
-            <p className="eyebrow text-ember">Currently pursuing</p>
+            <h3 className="display text-4xl uppercase text-foreground md:text-5xl">E Govinthan</h3>
+            <div className="relative mt-6 overflow-hidden rounded-sm border shadow-[var(--glow-ember)]">
+              <img src={portraitImg.url} alt="Portrait of E Govinthan" loading="lazy" width={944} height={944} className="aspect-square w-full object-cover" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+            </div>
+            <p className="eyebrow mt-10 text-ember">Currently pursuing</p>
             <p className="mt-4 text-xl text-foreground">B.E. Computer Science and Engineering</p>
             <p className="mt-1 text-muted-foreground">VRS College of Engineering and Technology</p>
             <ul className="mt-10 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
