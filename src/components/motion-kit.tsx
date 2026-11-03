@@ -22,21 +22,25 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
 export function SplitText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
   const reduce = useReducedMotion();
   return (
-    <span className={className} aria-label={text}>
+    <motion.span
+      className={className}
+      aria-label={text}
+      initial={reduce ? false : "hidden"}
+      whileInView="show"
+      viewport={{ once: true }}
+    >
       {text.split(" ").map((w, i) => (
         <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom" aria-hidden>
           <motion.span
             className="inline-block"
-            initial={reduce ? false : { y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true }}
+            variants={{ hidden: { y: "110%" }, show: { y: 0 } }}
             transition={{ duration: 1, delay: delay + i * 0.08, ease }}
           >
             {w}&nbsp;
           </motion.span>
         </span>
       ))}
-    </span>
+    </motion.span>
   );
 }
 
