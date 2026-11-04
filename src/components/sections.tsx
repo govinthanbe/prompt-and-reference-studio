@@ -255,7 +255,7 @@ export function Footer() {
       <div>
         <p className="eyebrow font-bold text-foreground">{profile.name}</p>
         <p className="mt-2 text-sm text-muted-foreground">{profile.role}</p>
-        <p className="mt-6 text-xs text-muted-foreground">© 2026 Ajith Kumar. All rights reserved.</p>
+        <p className="mt-6 text-xs text-muted-foreground">© 2026 GOVINTHAN. All rights reserved.</p>
       </div>
       <div className="flex items-center gap-6">
         <Socials />
