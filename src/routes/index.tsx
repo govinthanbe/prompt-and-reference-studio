@@ -34,11 +34,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    if (!sessionStorage.getItem("loaded")) setLoading(true);
+    if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
   }, []);
-  const done = useCallback(() => { sessionStorage.setItem("loaded", "1"); setLoading(false); }, []);
+  const done = useCallback(() => {
+    window.scrollTo(0, 0);
+    setLoading(false);
+  }, []);
   return (
     <div className="grain relative">
       <AnimatePresence>{loading && <Loader onDone={done} />}</AnimatePresence>
