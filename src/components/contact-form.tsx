@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Loader2, Check, ArrowUpRight } from "lucide-react";
-import { profile } from "@/lib/profile";
+import { supabase } from "@/integrations/supabase/client";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
