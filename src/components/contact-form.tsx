@@ -28,10 +28,13 @@ export function ContactForm() {
     setErrors({});
     setStatus("loading");
     try {
-      // Opens the visitor's email app with the message pre-filled. No keys exposed.
-      const body = `${r.data.message}\n\n— ${r.data.name} (${r.data.email})`;
-      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(r.data.subject)}&body=${encodeURIComponent(body)}`;
-      await new Promise((res) => setTimeout(res, 700));
+      const { error } = await supabase.from("contact_submissions").insert({
+        name: r.data.name,
+        email: r.data.email,
+        subject: r.data.subject,
+        message: r.data.message,
+      });
+      if (error) throw error;
       setStatus("success");
       e.currentTarget?.reset?.();
     } catch {
