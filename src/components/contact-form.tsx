@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Loader2, Check, ArrowUpRight } from "lucide-react";
-import { profile } from "@/lib/profile";
+import { supabase } from "@/integrations/supabase/client";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -28,10 +28,13 @@ export function ContactForm() {
     setErrors({});
     setStatus("loading");
     try {
-      // Opens the visitor's email app with the message pre-filled. No keys exposed.
-      const body = `${r.data.message}\n\n— ${r.data.name} (${r.data.email})`;
-      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(r.data.subject)}&body=${encodeURIComponent(body)}`;
-      await new Promise((res) => setTimeout(res, 700));
+      const { error } = await supabase.from("contact_submissions").insert({
+        name: r.data.name,
+        email: r.data.email,
+        subject: r.data.subject,
+        message: r.data.message,
+      });
+      if (error) throw error;
       setStatus("success");
       e.currentTarget?.reset?.();
     } catch {
@@ -63,7 +66,7 @@ export function ContactForm() {
         {status === "loading" ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending</> : status === "success" ? <><Check className="h-4 w-4" /> Sent</> : <>Send Message <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></>}
       </button>
       <p role="status" className="text-sm text-muted-foreground">
-        {status === "success" && "Thanks! Your email app should open with the message ready to send."}
+        {status === "success" && "Thanks! Your message has been sent — I'll get back to you soon."}
         {status === "error" && <span className="text-destructive">Something went wrong. Please email me directly.</span>}
       </p>
     </form>
