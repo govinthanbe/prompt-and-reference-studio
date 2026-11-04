@@ -17,7 +17,8 @@ export function ContactForm() {
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
     const r = schema.safeParse(data);
     if (!r.success) {
       const errs: typeof errors = {};
@@ -36,7 +37,7 @@ export function ContactForm() {
       });
       if (error) throw error;
       setStatus("success");
-      e.currentTarget?.reset?.();
+      form.reset();
     } catch {
       setStatus("error");
     }
