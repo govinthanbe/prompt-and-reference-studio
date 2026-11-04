@@ -66,7 +66,7 @@ export function ContactForm() {
         {status === "loading" ? <><Loader2 className="h-4 w-4 animate-spin" /> Sending</> : status === "success" ? <><Check className="h-4 w-4" /> Sent</> : <>Send Message <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></>}
       </button>
       <p role="status" className="text-sm text-muted-foreground">
-        {status === "success" && "Thanks! Your email app should open with the message ready to send."}
+        {status === "success" && "Thanks! Your message has been sent — I'll get back to you soon."}
         {status === "error" && <span className="text-destructive">Something went wrong. Please email me directly.</span>}
       </p>
     </form>
