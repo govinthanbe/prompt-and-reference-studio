@@ -1,9 +1,9 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform, useReducedMotion } from "motion/react";
 import { useRef } from "react";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail, ArrowUp } from "lucide-react";
-import heroSmoke from "@/assets/hero-smoke.jpg";
-import bugzenImg from "@/assets/bugzen.jpg";
-import portraitImg from "@/assets/portrait.jpg.asset.json";
+const heroSmoke = "/images/hero-smoke.jpg";
+const bugzenImg = "/images/bugzen.jpg";
+const portraitImg = "/images/profile.jpg";
 import { profile, stats, skills, projects } from "@/lib/profile";
 import { Reveal, SplitText, SectionHeading, PillButton, Magnetic } from "./motion-kit";
 import { ContactForm } from "./contact-form";
@@ -36,7 +36,7 @@ export function Hero() {
         </Reveal>
         <Reveal delay={0.8} className="mt-12 flex flex-col gap-4 sm:flex-row">
           <PillButton href="#projects">Explore My Work <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" /></PillButton>
-          <PillButton href={profile.resume} variant="ghost" download>Download Resume <Download className="h-4 w-4" /></PillButton>
+          <PillButton href={profile.resume} variant="ghost" download="Ajith_Kumar_Resume.pdf">Download Resume <Download className="h-4 w-4" /></PillButton>
         </Reveal>
       </motion.div>
       <a href="#about" aria-label="Scroll to about" className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
@@ -77,7 +77,7 @@ export function About() {
           <Reveal delay={0.2} className="md:col-span-4">
             <h3 className="display text-4xl uppercase text-foreground md:text-5xl">E Govinthan</h3>
             <div className="relative mt-6 overflow-hidden rounded-sm border shadow-[var(--glow-ember)]">
-              <img src={portraitImg.url} alt="Portrait of E Govinthan" loading="lazy" width={944} height={944} className="aspect-square w-full object-cover" />
+              <img src={portraitImg} alt="Portrait of E Govinthan" loading="lazy" width={944} height={944} className="aspect-square w-full object-cover" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
             </div>
             <p className="eyebrow mt-10 text-ember">Currently pursuing</p>
@@ -204,7 +204,7 @@ export function Experience() {
           <h3 className="display text-5xl md:text-7xl">WANT TO KNOW MORE?</h3>
           <p className="mt-6 max-w-lg text-lg text-muted-foreground">Explore my complete professional journey, technical skills, projects and experience.</p>
         </div>
-        <PillButton href={profile.resume} download>Download Resume <Download className="h-4 w-4" /></PillButton>
+        <PillButton href={profile.resume} download="Ajith_Kumar_Resume.pdf">Download Resume <Download className="h-4 w-4" /></PillButton>
       </Reveal>
     </section>
   );

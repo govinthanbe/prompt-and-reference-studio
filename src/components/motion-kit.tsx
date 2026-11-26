@@ -76,7 +76,7 @@ export function SectionHeading({ index, label, title }: { index: string; label: 
   );
 }
 
-export function PillButton({ href, children, variant = "solid", download, onClick }: { href: string; children: ReactNode; variant?: "solid" | "ghost"; download?: boolean; onClick?: () => void }) {
+export function PillButton({ href, children, variant = "solid", download, onClick }: { href: string; children: ReactNode; variant?: "solid" | "ghost"; download?: boolean | string; onClick?: () => void }) {
   return (
     <Magnetic className="w-full sm:w-auto">
       <a

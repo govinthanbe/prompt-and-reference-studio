@@ -6,7 +6,7 @@ export const profile = {
   email: "egovinthan3@gmail.com",
   github: "https://github.com/AjithKumar2809",
   linkedin: "https://www.linkedin.com/in/ajith-kumar-1a3343376",
-  resume: "/resume.pdf", // replace public/resume.pdf with your real resume
+  resume: "/Ajith_Kumar_Resume.pdf",
   bugzenDemo: "#", // add BugZen live URL
   bugzenRepo: "https://github.com/AjithKumar2809",
 };
